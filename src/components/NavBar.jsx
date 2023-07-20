@@ -1,22 +1,72 @@
 import React from 'react'
+import { useState } from 'react'
+import { AiOutlineClose, AiOutlineMenu } from 'react-icons/ai'
 
 const NavBar = () => {
-    return (
-        <div className="text-black flex justify-between h-20 items-center mx-auto px-4 max-w-[1240px] border-b-2 border-gray-400">
-            <h1 className='w-full text-3xl font-bold' >
-                Rubén Cid
-            </h1>
-            <ul className="flex">
-                <li className="p-4 whitespace-nowrap hover:font-bold">Sobre Mi</li>
-                <li className="p-4 whitespace-nowrap hover:font-bold">Projectos</li>
-                <li className="p-4 whitespace-nowrap hover:font-bold">Data Stories</li>
-                <li className="p-4 whitespace-nowrap hover:font-bold">Contacto</li>
-                <li className="p-4 whitespace-nowrap hover:font-bold lg:border-gray-300 lg:border-l-2">Español</li>
-                <li className="p-4 whitespace-nowrap hover:font-bold ">English</li>
-            </ul>
+    const [nav, setNav] = useState(true)
 
+    const handleNav = () => {
+        setNav(!nav)
+    }
+
+    return (
+        <div>
+            <div className="text-black flex justify-between h-20 items-center mx-auto px-4 max-w-[1240px]">
+                <h1 className='w-full' >
+                    <a class="no-underline text-3xl font-bold" href="/">Rubén Cid</a>
+                </h1>
+                <ul className="hidden md:flex">
+                    <li className="p-4 whitespace-nowrap hover:font-bold">
+                        <a href="/">Sobre Mi </a>
+                    </li>
+                    <li className="p-4 whitespace-nowrap hover:font-bold">
+                        <a href="/">Projectos</a>
+                    </li>
+                    <li className="p-4 whitespace-nowrap hover:font-bold">
+                        <a href="/">Data Stories</a>
+                    </li>
+                    <li className="p-4 whitespace-nowrap hover:font-bold">
+                        <a href="/">Contacto</a>
+                    </li>
+                    <li className="p-4 whitespace-nowrap hover:font-bold md:border-gray-300 md:border-l-2">
+                        <a href="/">Español</a>
+                    </li>
+                    <li className="p-4 whitespace-nowrap hover:font-bold ">
+                        <a href="/">English</a>
+                    </li>
+                </ul>
+                <div onClick={handleNav} className="block md:hidden">
+                    {!nav ? <AiOutlineClose size={27} /> : <AiOutlineMenu size={27} />}
+                </div>
+                <div className={!nav ? 'fixed left-0 top-0 w-[50%] border-r-gray-200 border-r h-full bg-white ease-in-out duration-500 block md:hidden': 'fixed left-[-100%] '}>
+                    <h1 className='w-full text-3xl font-bold m-4 pt-[5px]' >
+                        <a class="no-underline" href="/">Rubén Cid</a>
+                    </h1>
+                    <ul className="pt-[24px] uppercase bg-white">
+                        <li className="p-4 whitespace-nowrap border-b border-gray-300">
+                            <a href="/">Sobre Mi </a>
+                        </li>
+                        <li className="p-4 whitespace-nowrap border-b border-gray-300">
+                            <a href="/">Projectos</a>
+                        </li>
+                        <li className="p-4 whitespace-nowrap border-b border-gray-300">
+                            <a href="/">Data Stories</a>
+                        </li>
+                        <li className="p-4 whitespace-nowrap border-b-[2px] border-gray-400">
+                            <a href="/">Contacto</a>
+                        </li>
+                        <li className="p-4 pt-5 whitespace-nowrap border-b border-gray-200 ">
+                            <a href="/">Español</a>
+                        </li>
+                        <li className="p-4 whitespace-nowrap ">
+                            <a href="/">English</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <hr className="h-1 border-[1.5] border-gray-400 z-40" />
         </div>
-        )
+    )
 }
 
 export default NavBar
