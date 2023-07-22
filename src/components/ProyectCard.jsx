@@ -6,7 +6,6 @@ const ProyectCard = ({title, img, desc, link, contrast}) => {
         window.location = link
     }
     const contrast_color = !contrast ? " text-black/0 hover:text-black" : " text-white/0 hover:text-white"   
-    console.log(contrast, contrast_color)
     const blended_data = "md:block hidden absolute top-0 bottom-0 left-0 right-0 h-full w-full bg-bg-gray-500/0 hover:bg-gray-500/60 transition-duration-1000 ease-in-out" + contrast_color
  
     return (
